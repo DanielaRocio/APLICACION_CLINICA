@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Nueva Consulta{% endblock %}
+
+{% block content %}
+
+<h1>Nueva Consulta</h1>
+
+<form action="{{ url_for('consulta.create') }}" method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input type="date" name="fecha" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Médico</label>
+
+        <select name="id_medico" class="form-select">
+
+            {% for m in medicos %}
+            <option value="{{ m.id_medico }}">
+                {{ m.nombre }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Paciente</label>
+
+        <select name="id_paciente" class="form-select">
+
+            {% for p in pacientes %}
+            <option value="{{ p.id_paciente }}">
+                {{ p.nombre }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Diagnóstico</label>
+        <textarea name="diagnostico" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tratamiento</label>
+        <textarea name="tratamiento" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Guardar
+    </button>
+
+</form>
+
+{% endblock %}

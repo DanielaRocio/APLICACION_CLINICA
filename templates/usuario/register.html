@@ -1,0 +1,42 @@
+<!-- templates/usuario/register.html -->
+
+{% extends 'base.html' %}
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+
+<h1>Registro de Usuario</h1>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Rol</label>
+
+        <select name="rol" class="form-select">
+            <option value="Administrador">Administrador</option>
+            <option value="Recepcionista">Recepcionista</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Registrar
+    </button>
+
+</form>
+
+{% endblock %}

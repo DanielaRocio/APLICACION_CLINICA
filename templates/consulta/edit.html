@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Editar Consulta{% endblock %}
+
+{% block content %}
+
+<h1>Editar Consulta</h1>
+
+<form action="{{ url_for('consulta.edit', id=consulta.id_consulta) }}" method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input type="date" name="fecha" class="form-control" value="{{ consulta.fecha }}">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Médico</label>
+
+        <select name="id_medico" class="form-select">
+
+            {% for m in medicos %}
+            <option value="{{ m.id_medico }}"
+                {% if consulta.id_medico == m.id_medico %}selected{% endif %}>
+                {{ m.nombre }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Paciente</label>
+
+        <select name="id_paciente" class="form-select">
+
+            {% for p in pacientes %}
+            <option value="{{ p.id_paciente }}"
+                {% if consulta.id_paciente == p.id_paciente %}selected{% endif %}>
+                {{ p.nombre }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Diagnóstico</label>
+        <textarea name="diagnostico" class="form-control">{{ consulta.diagnostico }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tratamiento</label>
+        <textarea name="tratamiento" class="form-control">{{ consulta.tratamiento }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-warning">
+        Actualizar
+    </button>
+
+</form>
+
+{% endblock %}
